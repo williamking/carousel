@@ -5,6 +5,7 @@ $(function() {
 		this.height = 400;
 		this.speed = "slow";
 		this.moving = false;
+		this.version = "V1.0";
 		if (width)
 			this.width = width;
 		if (height)
@@ -27,11 +28,24 @@ $(function() {
 		}
 	}
 
+	Carousel.prototype.getVersion = function() {
+		console.log(this.version);
+	}
+
 	Carousel.prototype.init = function() {
 		this.dom.find(".pic-item").css("width", this.width + 'px').css("height", this.height + 'px');
 		this.dom.find(".slide-button").css("z-index", this.pages + 1);
 		this.dom.css("height", this.height + "px");
 		this.dom.css("width", this.width * 1.5 + "px");
+		var callback = function(that, direction) {
+			return function() {
+				if (that.moving) return;
+				that.rotate(1, direction);
+			}
+		}
+		var that = this;
+		this.dom.find(".left").click(callback(that, "right"));
+		this.dom.find(".right").click(callback(that, "left"));
 		this.xMargin = this.width * 0.5 / (this.pages - 1);
 		this.initPics(0.8); 
 	    this.updateAttr();	

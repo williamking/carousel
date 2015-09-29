@@ -4,7 +4,7 @@
 	width: 1200px;
 }
 
-.carousel-list {
+.carousel .carousel-list {
 	position: absolute;
 	list-style-type: none;
 	width: 100%;
@@ -14,7 +14,7 @@
 	padding: 0!important;
 }
 
-.pic-item {
+.carousel .pic-item {
 	height: 100%;
 	width: 100%;
 	position: absolute;	
@@ -23,13 +23,13 @@
 	cursor: pointer;
 }
 
-.pic-item img{
+.carousel .pic-item img{
 	height: 100%;
 	width: 100%;
 	position: absolute;
 }
 
-.pic-item .pic-cover {
+.carousel .pic-item .pic-cover {
 	height: 100%;
 	width: 100%;
 	background-color: black;
@@ -37,20 +37,56 @@
 	opacity: 0;
 }
 
-.slide-button {
-	width: 16.6%;
-	height: 100%;
+.carousel .slide-button {
+	width: 100px;
+	height: 100px;
+	top: 40%;
 	display: inline-block;
-	background-color: green;
+	background-color: black;
 	position: absolute;
 	opacity: 0.3;
-	display: none;
+	border-radius: 50%;
+	cursor: pointer;
 }
 
-.left {
-	left: 0;
+.carousel .right:after, .carousel .right:before {
+	border: 20px solid transparent;
+	border-left: 20px solid; 
+	width: 0;
+	height: 0;
+	position: absolute;
+	right: 20px;
+	top: 30px;
+	content: '';
 }
 
-.right {
-	left: 83.3%;
+.carousel .right:before {
+	border-left-color: #FFF;
+	right: 16px;
+	top: 30px;
+}
+
+.carousel .left:after, .carousel .left:before {
+	border: 20px solid transparent;
+	border-right: 20px solid; 
+	width: 0;
+	height: 0;
+	position: absolute;
+	right: 42px;
+	top: 30px;
+	content: '';
+}
+
+.carousel .left:before {
+	border-right-color: #FFF;
+	right: 46px;
+	top: 30px;
+}
+
+.carousel .left {
+	left: 20%;
+}
+
+.carousel .right {
+	right: 20%;
 }
